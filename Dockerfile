@@ -5,7 +5,7 @@ LABEL Mauricio Sanchez <msanchez@aplyca.com>
 ENV ANSIBLE_VERSION "2.7.2"
 
 RUN apk --update --no-cache add py-pip gcc make libffi-dev musl-dev openssl-dev python-dev && \
-    pip install packaging cffi && \
+    pip install packaging cffi pycrypto && \
     wget -q https://github.com/ansible/ansible/archive/v${ANSIBLE_VERSION}.tar.gz && \
     tar xzf v${ANSIBLE_VERSION}.tar.gz && \
     cd ansible-${ANSIBLE_VERSION} && \
