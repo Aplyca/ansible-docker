@@ -8,9 +8,8 @@ RUN apk --update --no-cache add py-pip gcc make libffi-dev musl-dev openssl-dev 
     pip install packaging cffi pycrypto && \
     wget -q https://github.com/ansible/ansible/archive/v${ANSIBLE_VERSION}.tar.gz && \
     tar xzf v${ANSIBLE_VERSION}.tar.gz && \
-    cd ansible-${ANSIBLE_VERSION} && \
-    make install && \
-    cd .. && rm -rf ansible-${ANSIBLE_VERSION} v${ANSIBLE_VERSION}.tar.gz && \
+    make -C ansible-${ANSIBLE_VERSION} install && \
+    rm -rf ansible-${ANSIBLE_VERSION} v${ANSIBLE_VERSION}.tar.gz && \
     apk del --purge gcc make libffi-dev musl-dev openssl-dev python-dev && \
     pip uninstall -y packaging
 
