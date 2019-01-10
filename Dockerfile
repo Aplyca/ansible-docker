@@ -2,10 +2,12 @@ FROM alpine
 
 LABEL Mauricio Sanchez <msanchez@aplyca.com>
 
-ENV ANSIBLE_VERSION "2.7.2"
+RUN apk --update --no-cache add py-pip openssh-client
+    
+ENV ANSIBLE_VERSION "2.7.5"
 
-RUN apk --update --no-cache add py-pip gcc make libffi-dev musl-dev openssl-dev python-dev && \
-    pip install packaging cffi pycrypto && \
+RUN apk --update --no-cache add gcc make libffi-dev musl-dev openssl-dev python-dev && \
+    pip install cffi pycrypto packaging && \
     wget -q https://github.com/ansible/ansible/archive/v${ANSIBLE_VERSION}.tar.gz && \
     tar xzf v${ANSIBLE_VERSION}.tar.gz && \
     make -C ansible-${ANSIBLE_VERSION} install && \
