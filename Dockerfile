@@ -4,7 +4,7 @@ LABEL Mauricio Sanchez <msanchez@aplyca.com>
 
 RUN apk --update --no-cache add py-pip openssh-client
     
-ENV ANSIBLE_VERSION "2.7.5"
+ENV ANSIBLE_VERSION "2.7.10"
 
 RUN apk --update --no-cache add gcc make libffi-dev musl-dev openssl-dev python-dev && \
     pip install cffi pycrypto packaging && \
